@@ -18,13 +18,7 @@ def run_game() -> None:
     
     while True:
         gf.check_events()
-        
-        screen.fill(ai_settings.bg_color)
-        
-        ship.blitme()
-        
-        # Atualiza a renderização da janela
-        pygame.display.flip()
+        gf.update_screen(ai_settings, screen, ship)
     
 
 if __name__ == "__main__":
