@@ -9,15 +9,20 @@ def run_game() -> None:
     pygame.init()
 
     ai_settings = Settings()
+    # Cria a janela com um certo tamanho e retorna sua superfície
     screen = pygame.display.set_mode(ai_settings.screen_dimensions)
     
     # Define o título da janela
     pygame.display.set_caption("Alien Invasion")
     
-    ship = Ship(screen)
+    ship = Ship(screen, ai_settings)
     
     while True:
-        gf.check_events()
+        gf.check_events(ship)
+
+        # Atualiza o movimento da espaçonave
+        ship.update()
+
         gf.update_screen(ai_settings, screen, ship)
     
 

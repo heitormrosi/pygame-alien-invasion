@@ -7,4 +7,5 @@ class Settings:
         self.screen_dimensions = (self.screen_width, self.screen_height)
         # RGB: cinza claro
         self.bg_color = (230, 230, 230)
+        self.ship_speed_factor = 1.5
         
