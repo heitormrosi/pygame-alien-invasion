@@ -2,6 +2,7 @@ import pygame
 from settings import Settings
 
 class Ship:
+    """ Uma nave espacial. """
     def __init__(self, screen: pygame.Surface, ai_settings: Settings) -> None:
         self.screen = screen
         self.image = pygame.image.load("images/ship.bmp")
