@@ -46,7 +46,7 @@ def check_keydown_events(
             ship,
             bullets
         )
-    if event.key == pygame.K_q:
+    if event.key == pygame.K_q or event.key == pygame.K_ESCAPE:
         pygame.quit()
         sys.exit()
 
@@ -180,3 +180,22 @@ def create_fleet(
                 alien_number,
                 row_number
             )
+
+
+def update_aliens(ai_settings: Settings, aliens: Group):
+    check_fleet_edges(
+        ai_settings, aliens
+    )
+    aliens.update()
+
+def check_fleet_edges(ai_settings: Settings, aliens: Group):
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_settings, aliens)
+            break
+
+def change_fleet_direction(ai_settings: Settings, aliens: Group):
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+
+    ai_settings.fleet_direction *= -1
